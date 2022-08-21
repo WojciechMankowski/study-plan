@@ -13,7 +13,6 @@ class Schedule:
             dateandtime = timedelta(days=number_day) + startweek
             self.dates.append(dateandtime.date())
             number_day+=1
-        print(self.dates)
 
     def addTask(self, dayTask: DayTask):
         self.daytasks.append(dayTask)
@@ -60,10 +59,13 @@ class Schedule:
         return read, listening, writin, grama,app
 
     def showSchudule(self):
-        for  key, item in self.schedule.items():
-            for task in item:
-                print(f"{key} są zadania {task}")
-                print("-"*15)
+        print(self.schedule)
+        # for  key, item in self.schedule.items():
+        #     for task in item:
+        #         print(f"{key} są zadania {task}")
+        #         print("-"*15)
+    def getShedule(self):
+        return self.schedule
 
 if __name__ == '__main__':
     day = "2022-08-16"
