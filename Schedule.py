@@ -16,7 +16,6 @@ class Schedule:
 
     def addTask(self, dayTask: DayTask):
         self.daytasks.append(dayTask)
-#     TODO funkcja rozplanowania nauki
     def learningPlanning(self):
         colection = self.__divisionintocategories()
         read =  colection[0]
