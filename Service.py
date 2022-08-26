@@ -19,6 +19,8 @@ class Service:
         schedule = data['shedule']
         for key, value in schedule.items():
             date = (datetime.strptime(key, "%Y-%m-%d")).date()
+            print(value)
+            print(type*value)
             for item in value:
                 self.schedule.addTask(
                     DayTask(name=item['name'],
