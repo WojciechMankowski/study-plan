@@ -1,5 +1,5 @@
 import os
-from datetime import datetime
+from datetime import datetime, timedelta
 from json import load
 from fpdf import FPDF
 import fpdf
@@ -12,24 +12,35 @@ class Service:
 
     def __init__(self, date: datetime):
         self.schedule = Schedule(date)
+        self.dates = []
+        self._getDate(date)
 
     def readingJSON(self):
         file = open('data.json', encoding="utf-8")
         data = load(file)
-        schedule = data['shedule']
-        for key, value in schedule.items():
-            date = (datetime.strptime(key, "%Y-%m-%d")).date()
-            print(value)
-            print(type*value)
+        schedule = []
+        for key, value in data.items():
+            # date = (datetime.strptime(key, "%Y-%m-%d")).date()
+            print(key)
             for item in value:
-                self.schedule.addTask(
+                print(item)
+                schedule.append(
                     DayTask(name=item['name'],
                             description=item['description'],
                             url=item["url"],
-                            data=date)
+                            )
                 )
-        self.schedule.learningPlanning()
+        numberday = 0
+        for daytask in schedule:
+            self.schedule.learningPlanning(daytask, self.dates[numberday])
+            numberday += 1
         # self.schedule.showSchudule()
+    def _getDate(self, startweek):
+        number_day = 1
+        while number_day != 7:
+            dateandtime = timedelta(days=number_day) + startweek
+            self.dates.append(dateandtime.date())
+            number_day+=1
 
     def creatDOC(self):
         data = list(self.schedule.getShedule().keys())
@@ -61,6 +72,6 @@ if __name__ == '__main__':
     date = datetime.strptime(day, "%Y-%m-%d")
     serv = Service(date)
     serv.readingJSON()
-    serv.show()
+    # serv.show()
     # serv.creatDOC()
 

@@ -18,39 +18,16 @@ class Schedule:
         # print("---"*10)
         # print(dayTask)
         self.daytasks.append(dayTask)
-    def learningPlanning(self):
-        colection = self.__divisionintocategories()
-        read =  colection[0]
-        listening =  colection[1]
-        writin =  colection[2]
-        grama =  colection[3]
-        app =  colection[4]
-        for item in read:
-            self.schedule[item.data] = read
-        print("self.schedule")
-        print(self.schedule)
-        numberday = 0
-        # while numberday != 7:
-        #     if numberday == 0:
-        #         self.schedule[self.dates[numberday]] = [app]
-        #         print(app)
-        #     elif numberday == 2 or numberday == 4 or numberday == 6:
-        #         print(learning_vocabulary)
-        #         self.schedule[self.dates[numberday]] = [learning_vocabulary, app]
-        #     elif numberday == 1:
-        #         self.schedule[self.dates[numberday]] = [grama, app, writin]
-        #         print(grama,writin)
-        #     elif numberday == 3:
-        #         self.schedule[self.dates[numberday]] = [read, app]
-        #         print(read)
-        #     elif numberday == 5:
-        #         self.schedule[self.dates[numberday]] = [listening, app]
-        #         print(listening)
-        #     elif numberday == 6:
-        #         self.schedule[self.dates[numberday]] = [repeat, app]
-        #         print(repeat)
-        #     numberday+=1
-        print("")
+    def learningPlanning(self, dayTask: DayTask, date: datetime.date):
+        print()
+        if date in self.schedule:
+            item = self.schedule[date]
+            item.append(dayTask)
+        else:
+            self.schedule[date] = []
+            item = self.schedule[date]
+            item.append(dayTask)
+
     def __divisionintocategories(self):
         read = []
         key_read = ["Czytanie", "Artykuł", "Czytanie artykułu"]
