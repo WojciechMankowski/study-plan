@@ -5,8 +5,8 @@
 .ipynb_checkpoints
 */.ipynb_checkpoints/*
 .idea
-*.json
-data.json
+
+
 # IPython
 profile_default/
 ipython_config.py

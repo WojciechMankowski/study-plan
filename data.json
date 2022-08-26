@@ -1,0 +1,67 @@
+{
+   "shedule":{
+      "2022-08-23":[
+         {
+            "name":"Spotkanie z lektorem",
+            "description":"Wtorek o 8:15",
+            "url":""
+         },
+         {
+            "name":"Aplikacja",
+            "description":"Korzystanie z Dulingo",
+            "url":""
+         }
+      ]
+   ,
+   "2022-08-24":[
+      {
+         "name":"Czytanie artykułu",
+         "description":"Dialogue - Doctor & Patient",
+         "url":"https://www.grammarbank.com/dialogue-examples-doctor-patient.html"
+      },
+      {
+         "name":"Aplikacja",
+         "description":"Korzystanie z Dulingo",
+         "url":""
+      }
+   ],
+   "2022-08-25":[
+      {
+         "name":"Aplikacja",
+         "description":"Korzystanie z Dulingo",
+         "url":""
+      }
+   ],
+   "2022-08-26":[
+      {
+         "name":"Słuchanie",
+         "description":"At the hospital",
+         "url":"https://www.youtube.com/watch?v=2PCgztYXnxk"
+      },
+      {
+         "name":"Aplikacja",
+         "description":"Korzystanie z Dulingo",
+         "url":""
+      }
+   ],
+   "2022-08-27":[
+      {
+         "name":"Aplikacja",
+         "description":"Korzystanie z Dulingo",
+         "url":""
+      }
+   ],
+   "2022-08-29":[
+      {
+         "name":"Aplikacja",
+         "description":"Korzystanie z Dulingo",
+         "url":""
+      },
+      {
+         "name":"Powtórka słówek",
+         "description":"",
+         "url":""
+      }
+   ]
+   }
+}
