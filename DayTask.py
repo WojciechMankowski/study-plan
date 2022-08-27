@@ -6,6 +6,7 @@ from dataclasses import dataclass
 class DayTask:
     name: str
     description: str
+    type: str
     data: datetime.date = ""
     url: str = ""
 

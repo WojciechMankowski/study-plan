@@ -18,8 +18,10 @@ class Schedule:
         # print("---"*10)
         # print(dayTask)
         self.daytasks.append(dayTask)
-    def learningPlanning(self, dayTask: DayTask, date: datetime.date):
-        print()
+    def learningPlanning(self,dayTask:DayTask,date:datetime.date):
+        # print(date)
+        # print(self.showSchudule())
+
         if date in self.schedule:
             item = self.schedule[date]
             item.append(dayTask)
@@ -27,6 +29,13 @@ class Schedule:
             self.schedule[date] = []
             item = self.schedule[date]
             item.append(dayTask)
+    def creatingSschudle(self, date: datetime.date):
+        if date in self.schedule:
+            item = self.schedule[date]
+        else:
+            self.schedule[date] = []
+
+
 
     def __divisionintocategories(self):
         read = []
@@ -57,8 +66,9 @@ class Schedule:
         return read, listening, writin, grama,app
 
     def showSchudule(self):
-        print(self.schedule)
-        # for  key, item in self.schedule.items():
+        # print(self.schedule)
+        for key, item in self.schedule.items():
+            print(key)
         #     for task in item:
         #         print(f"{key} są zadania {task}")
         #         print("-"*15)

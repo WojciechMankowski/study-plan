@@ -10,7 +10,7 @@ from Schedule import Schedule
 
 class Service:
 
-    def __init__(self, date: datetime):
+    def __init__(self, date: datetime.date):
         self.schedule = Schedule(date)
         self.dates = []
         self._getDate(date)
@@ -21,25 +21,38 @@ class Service:
         schedule = []
         for key, value in data.items():
             # date = (datetime.strptime(key, "%Y-%m-%d")).date()
-            print(key)
+            # print(key)
             for item in value:
-                print(item)
+                # print(item)
                 schedule.append(
                     DayTask(name=item['name'],
                             description=item['description'],
-                            url=item["url"],
+                            url=item["url"], type=key
                             )
                 )
         numberday = 0
+        app = DayTask("Korzystanie z aplikacji", "", "app")
+        replay = DayTask("Powtórka słowek", "", "")
         for daytask in schedule:
-            self.schedule.learningPlanning(daytask, self.dates[numberday])
+            # print(numberday)
+            print(daytask.type == "Zajęcia")
+            if daytask.type == "Zajęcia":
+                self.schedule.learningPlanning(daytask, self.dates[0])
+            elif daytask.type == "Czytanie":
+                self.schedule.learningPlanning(daytask, self.dates[1])
+            elif numberday == 2 or numberday == 4:
+                self.schedule.learningPlanning(replay, date=self.dates[numberday])
+            self.schedule.learningPlanning(app, self.dates[numberday])
             numberday += 1
-        # self.schedule.showSchudule()
+        self.schedule.showSchudule()
     def _getDate(self, startweek):
         number_day = 1
+        self.dates.append(startweek.date())
         while number_day != 7:
+
             dateandtime = timedelta(days=number_day) + startweek
             self.dates.append(dateandtime.date())
+            self.schedule.creatingSschudle(dateandtime.date())
             number_day+=1
 
     def creatDOC(self):
@@ -68,7 +81,7 @@ class Service:
                     print(value)
 
 if __name__ == '__main__':
-    day = "2022-08-16"
+    day = "2022-08-30"
     date = datetime.strptime(day, "%Y-%m-%d")
     serv = Service(date)
     serv.readingJSON()

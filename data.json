@@ -1,4 +1,12 @@
 {
+  "Zajęcia":
+          [
+            {
+            "name":"Spotkanie z lektorem",
+            "description":"Wtorek o 8:15",
+            "url":""
+         }
+          ],
       "Czytanie":
       [{
         "name": "Czytanie artykułu",
@@ -33,14 +41,7 @@
          "description":"",
          "url":""
       }
-          ],
-  "Zajęcia":
-          [
-            {
-            "name":"Spotkanie z lektorem",
-            "description":"Wtorek o 8:15",
-            "url":""
-         }
           ]
+
 
     }
