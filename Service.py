@@ -34,8 +34,6 @@ class Service:
         app = DayTask("Korzystanie z aplikacji", "", "app")
         replay = DayTask("Powtórka słowek", "", "")
         for daytask in schedule:
-            # print(numberday)
-            print(daytask.type == "Zajęcia")
             if daytask.type == "Zajęcia":
                 self.schedule.learningPlanning(daytask, self.dates[0])
             elif daytask.type == "Czytanie":
@@ -49,7 +47,6 @@ class Service:
         number_day = 1
         self.dates.append(startweek.date())
         while number_day != 7:
-
             dateandtime = timedelta(days=number_day) + startweek
             self.dates.append(dateandtime.date())
             self.schedule.creatingSschudle(dateandtime.date())
@@ -61,7 +58,7 @@ class Service:
         schudle = self.schedule.getShedule()
         for key, item in schudle.items():
             for value in item:
-                if type(value) == list :
+                if type(value) == list:
                     if len(value) != 0:
                         doc.AddTabet(value, str(key))
                 elif type(value) ==DayTask:
@@ -81,7 +78,7 @@ class Service:
                     print(value)
 
 if __name__ == '__main__':
-    day = "2022-08-30"
+    day = "2022-09-09"
     date = datetime.strptime(day, "%Y-%m-%d")
     serv = Service(date)
     serv.readingJSON()

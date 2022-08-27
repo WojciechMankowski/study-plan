@@ -66,12 +66,11 @@ class Schedule:
         return read, listening, writin, grama,app
 
     def showSchudule(self):
-        # print(self.schedule)
-        for key, item in self.schedule.items():
-            print(key)
-        #     for task in item:
-        #         print(f"{key} są zadania {task}")
-        #         print("-"*15)
+        keys = list(self.schedule.keys())
+        lenght = 0
+        print(self.schedule[keys[-1]], keys[-1])
+        print(self.schedule[keys[lenght]], keys[lenght])
+        # print(self.schedule[keys[lenght+1], keys[-3])
     def getShedule(self):
         return self.schedule
 
@@ -79,10 +78,5 @@ if __name__ == '__main__':
     day = "2022-08-16"
     date = datetime.strptime(day, "%Y-%m-%d")
     schedule = Schedule(date)
-    app = DayTask("Aplikacja", "Korzystanie z Dulingo")
-    writer = DayTask("Czytanie artykułu", "Czytanie artukułu na temat emocji",
-                     "https://www.talkenglish.com/speaking/regular/feelingsemotions1.aspx")
-    schedule.addTask(app)
-    schedule.addTask(writer)
-    schedule.learningPlanning()
-    schedule.showSchudule()
+
+
