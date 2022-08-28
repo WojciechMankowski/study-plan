@@ -41,7 +41,11 @@
          "description":"",
          "url":""
       }
-          ]
-
-
+          ],
+  "Podsumowanie tygodnia": [
+            {
+         "name":"Powtórka materiału z całego tygodnia",
+         "description":"Powtórka materiału z całego tygodnia",
+         "url":""
+      }]
     }

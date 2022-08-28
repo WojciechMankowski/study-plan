@@ -10,26 +10,27 @@ from Schedule import Schedule
 
 class Service:
 
-    def __init__(self, date: datetime.date):
+    def __init__(self, date: datetime.date)-> None:
         self.schedule = Schedule(date)
-        self.dates = []
+        self.dates = [date.date()]
         self._getDate(date)
 
-    def readingJSON(self):
+    def readingJSON(self)-> None:
         file = open('data.json', encoding="utf-8")
         data = load(file)
         schedule = []
         for key, value in data.items():
-            # date = (datetime.strptime(key, "%Y-%m-%d")).date()
-            # print(key)
             for item in value:
-                # print(item)
                 schedule.append(
                     DayTask(name=item['name'],
                             description=item['description'],
                             url=item["url"], type=key
                             )
                 )
+        self.Scheduling(schedule)
+        self.schedule.showSchudule()
+
+    def Scheduling(self, schedule: list[DayTask])-> None:
         numberday = 0
         app = DayTask("Korzystanie z aplikacji", "", "app")
         replay = DayTask("Powtórka słowek", "", "")
@@ -37,13 +38,22 @@ class Service:
             if daytask.type == "Zajęcia":
                 self.schedule.learningPlanning(daytask, self.dates[0])
             elif daytask.type == "Czytanie":
+                self.schedule.learningPlanning(daytask, self.dates[5])
+            elif daytask.type == "Powtórka":
+                self.schedule.learningPlanning(replay, date=self.dates[2])
+                self.schedule.learningPlanning(replay, date=self.dates[4])
+                self.schedule.learningPlanning(replay, date=self.dates[6])
+            elif daytask.type == "Słuchanie":
+                self.schedule.learningPlanning(daytask, self.dates[3])
+            elif daytask.type == "Gramatyka":
                 self.schedule.learningPlanning(daytask, self.dates[1])
-            elif numberday == 2 or numberday == 4:
-                self.schedule.learningPlanning(replay, date=self.dates[numberday])
+                self.schedule.learningPlanning(daytask, self.dates[5])
+            elif daytask.type == "Podsumowanie tygodnia":
+                self.schedule.learningPlanning(daytask, self.dates[7])
+
             self.schedule.learningPlanning(app, self.dates[numberday])
             numberday += 1
-        self.schedule.showSchudule()
-    def _getDate(self, startweek):
+    def _getDate(self, startweek) -> None:
         number_day = 1
         self.dates.append(startweek.date())
         while number_day != 7:
@@ -64,18 +74,7 @@ class Service:
                 elif type(value) ==DayTask:
                     doc.AddTabet(value, str(key))
         doc.Save()
-    def show(self):
-        schudle = self.schedule.getShedule()
-        for key, item in schudle.items():
-            print(key)
-            print("---"*5)
-            for value in item:
-                if type(value) == list :
-                    if len(value) != 0:
-                       for i in value:
-                           print(i)
-                elif type(value) ==DayTask:
-                    print(value)
+
 
 if __name__ == '__main__':
     day = "2022-09-09"
